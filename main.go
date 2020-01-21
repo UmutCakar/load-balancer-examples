@@ -55,10 +55,10 @@ func proxy(backend string, connection net.Conn) error {
 		return fmt.Errorf("Failed to connect to backend %s: %v", backend, err)
 	}
 
-	// c => bc
+	// connection => backendConnection
 	go io.Copy(backendConnection, connection)
 
-	// bc => c
+	// backendConnection => connection
 	go io.Copy(connection, backendConnection)
 
 	return nil
