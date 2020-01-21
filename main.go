@@ -65,9 +65,8 @@ func proxy(backend string, connection net.Conn) error {
 }
 
 func chooseBackend()  string {
+	//robin
 	s := server[counter % len(server)]
 	counter++
 	return s
-	// TODO choose randomly
-	//return server[0]
 }
